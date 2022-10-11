@@ -24,8 +24,7 @@ git remote set-url origin <new_url>
     * The minimum required CMake version may be changed in the source files,
     but make sure you know what your doing! Setting the CMake version to an
     older version could introduce issues
-* For now, [criterion](https://github.com/Snaipe/Criterion); I have plans to
-add it as a submodule in the future...
+* [Criterion](https://github.com/Snaipe/Criterion)
 
 ### Building
 
