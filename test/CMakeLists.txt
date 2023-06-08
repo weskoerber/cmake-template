@@ -26,3 +26,9 @@ else()
     ${PROJECT_NAME}"
   )
 endif()
+
+target_link_libraries(
+  ${PROJECT_NAME}
+  PRIVATE
+  hello
+)

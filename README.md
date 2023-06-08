@@ -6,6 +6,15 @@ A minimal CMake project template for your next C/C++ project.
 
 - Build executables and/or static or dynamic libraries
 - Testing with [criterion](https://github.com/Snaipe/Criterion)
+- Private/Interface header includes
+    - Private includes (from within the library):
+        ```cpp
+        #include "hello.h"
+        ```
+    - Public includes (outside the library, e.g `main`):
+        ```cpp
+        #include "hello/hello.h"
+        ```
 
 ## Getting Started
 
@@ -19,38 +28,33 @@ git remote set-url origin <new_url>
 
 ### Prerequisites
 
-* A C/C++ compiler
-* CMake (version 3.22)
-    * The minimum required CMake version may be changed in the source files,
-    but make sure you know what your doing! Setting the CMake version to an
-    older version could introduce issues
-* [Criterion](https://github.com/Snaipe/Criterion)
+- A C/C++ compiler
+- CMake (version 3.22)
+    - The minimum required CMake version may be changed in the source files
+- [Criterion](https://github.com/Snaipe/Criterion)
+    - Only required if `BUILD_TESTS` is enabled
 
 ### Building
 
 The default CMake build configuration builds the `cmake-template` binary and
-the `hello` library (static, by default). The `cmake-template` binary is placed
-in the `bin` directory, and the `hello` library is placed in the `lib`
-directory:
+the `hello` library (static, by default):
 
 ```shell
 cmake -S . -B build
 ```
 
 The `hello` library is built as a static library by default. Dynamic libraries
-may be built instead by setting the `BUILD_SHARED_LIBS` CMake cache entry. The
-library is placed in the `lib` directory:
+may be built instead by setting the `BUILD_SHARED_LIBS` CMake cache entry:
 
 ```shell
 cmake -S . -B build -DBUILD_SHARED_LIBS=ON
 ```
 
 The `cmake-template-test` test binary is not built by default, but may be
-built by setting the `BUILD_TEST` CMake cache entry. The `cmake_template_test`
-binary is placed in the `bin` directory:
+built by setting the `BUILD_TESTS` CMake cache entry:
 
 ```
-cmake -S . -B build -DBUILD_TEST
+cmake -S . -B build -DBUILD_TESTS
 ```
 
 ## Project Structure
@@ -60,9 +64,9 @@ cmake -S . -B build -DBUILD_TEST
 Build artifact output locations are set in the top-level `CMakeLists.txt`:
 
 ```cmake
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 ```
 
 ### Directories
@@ -77,7 +81,7 @@ The top-level source directory. Implementations and private headers live here.
 
 #### `include`
 
-The top-level include directory. Public headers live here.
+The top-level include directory. Public headers for libraries live here.
 
 #### `test`
 
@@ -86,5 +90,5 @@ live here.
 
 #### `src/hello`
 
-The code for the sample library lives here. By default it is not linked to
-either the main `cmake-template` binary or the `cmake-template-test` binary.
+The code for the sample library lives here. Implementations and private headers
+for the `hello` library live here.
