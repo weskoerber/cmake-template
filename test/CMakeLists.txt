@@ -9,8 +9,20 @@ add_executable(${PROJECT_NAME})
 add_subdirectory(src)
 
 if (${CRITERION_FOUND})
-    target_include_directories(${PROJECT_NAME} PRIVATE ${CRITERION_INCLUDE_DIRS})
-    target_link_libraries(${PROJECT_NAME} ${CRITERION_LIBRARIES})
+  target_include_directories(
+    ${PROJECT_NAME}
+    PRIVATE
+    ${CRITERION_INCLUDE_DIRS}
+  )
+  target_link_libraries(
+    ${PROJECT_NAME}
+    PRIVATE
+    ${CRITERION_LIBRARIES}
+  )
 else()
-    message(FATAL_ERROR "Criterion is required to build ${PROJECT_NAME}")
+  message(
+    FATAL_ERROR
+    "Criterion is required to build
+    ${PROJECT_NAME}"
+  )
 endif()

@@ -1,7 +1,7 @@
-#include <stdio.h>
 #include "hello.h"
 
-void hello()
-{
-    printf("Hello from libhello!\n");
+#include <stdio.h>
+
+void hello() {
+  printf("Hello from libhello!\n");
 }
