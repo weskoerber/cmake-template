@@ -31,8 +31,6 @@ git remote set-url origin <new_url>
 - A C/C++ compiler
 - CMake (version 3.22)
     - The minimum required CMake version may be changed in the source files
-- [Criterion](https://github.com/Snaipe/Criterion)
-    - Only required if `BUILD_TESTS` is enabled
 
 ### Building
 
