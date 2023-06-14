@@ -9,12 +9,6 @@ endif()
 option(BUILD_SHARED_LIBS "Build shared libs" OFF)
 if (${BUILD_SHARED_LIBS})
     message("${PROJECT_NAME}: Building shared library")
-    set(CMAKE_LIBRARY_OUTPUT_DIRECTORY
-        ${CMAKE_SOURCE_DIR}/lib
-    )
 else()
     message("${PROJECT_NAME}: Building static library")
-    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY
-        ${CMAKE_SOURCE_DIR}/lib
-    )
 endif()
