@@ -32,3 +32,13 @@ target_link_libraries(
   PRIVATE
   hello
 )
+
+add_custom_target(
+  test
+  COMMAND
+  ${PROJECT_NAME}
+  WORKING_DIRECTORY
+  $<TARGET_FILE_DIR:${PROJECT_NAME}>
+  DEPENDS
+  $<TARGET_FILE:${PROJECT_NAME}>
+)
