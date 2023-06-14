@@ -20,15 +20,9 @@ if(NOT CRITERION_LIB)
 
   find_program(MESON meson REQUIRED)
 
-  if(${BUILD_SHARED_LIBS})
-    set(CRITERION_LIB ${CRITERION_LIB_DIR}/${CMAKE_SHARED_LIBRARY_PREFIX}criterion${CMAKE_SHARED_LIBRARY_SUFFIX})
-    add_library(criterion SHARED IMPORTED)
-    message("criterion SHARED library: ${CRITERION_LIB}")
-  else()
-    set(CRITERION_LIB ${CRITERION_LIB_DIR}/${CMAKE_STATIC_LIBRARY_PREFIX}criterion${CMAKE_STATIC_LIBRARY_SUFFIX})
-    add_library(criterion STATIC IMPORTED)
-    message("criterion STATIC library: ${CRITERION_LIB}")
-  endif()
+  set(CRITERION_LIB ${CRITERION_LIB_DIR}/${CMAKE_SHARED_LIBRARY_PREFIX}criterion${CMAKE_SHARED_LIBRARY_SUFFIX})
+  add_library(criterion SHARED IMPORTED)
+  message("criterion SHARED library: ${CRITERION_LIB}")
 
   set_target_properties(criterion PROPERTIES IMPORTED_LOCATION ${CRITERION_LIB})
 
