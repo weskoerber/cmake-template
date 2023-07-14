@@ -16,7 +16,7 @@ if(NOT CRITERION_LIB)
   set(CRITERION_INCLUDE_DIRS ${CRITERION_DIR}/include)
 
   include(ExternalProject)
-  add_dependencies(cmake-template-test ${CRITERION_DEP})
+  add_dependencies(${PROJECT_NAME} ${CRITERION_DEP})
 
   find_program(MESON meson REQUIRED)
 
